@@ -1,0 +1,24 @@
+body{
+	padding: 8dp;
+	margin-top: 32;
+	margin-left: auto;
+	margin-right: auto;;
+    width: 600px;
+  	font-family: 'Tahoma';
+
+}
+
+#heading{
+	text-align: center;
+	font-size: 32px;
+	color: #686868;
+}
+
+#editor{
+	min-height: 200px;
+	padding: 12;
+	margin-top: 32;
+	font-size: 20px;
+	color: #808080
+}
+
