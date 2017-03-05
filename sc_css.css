@@ -1,3 +1,4 @@
+
 body{
 	padding: 8dp;
 	margin-top: 32;
@@ -14,11 +15,14 @@ body{
 	color: #686868;
 }
 
-#editor{
+
+
+.editor{
 	min-height: 200px;
 	padding: 12;
 	margin-top: 32;
 	font-size: 20px;
-	color: #808080
+	color: #808080;
+	border: 1px solid #AFAFAF;
+	box-shadow: 2px 2px 8px #DFDFDF;
 }
-
