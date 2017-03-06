@@ -1,3 +1,4 @@
+
 $('.editor').on('keypress', function (e) {
     if (e.keyCode === 13) {
         e.preventDefault();
@@ -6,4 +7,13 @@ $('.editor').on('keypress', function (e) {
 }).on('click', function(e) {
     e.preventDefault();
     
+}); 
+
+
+$(document).ready(function(){
+	$('.toolbar a').click(function(ev){
+	var command=$(this).data('command');
+	document.execCommand($(this).data('command'), false, null);
+	});
 });
+

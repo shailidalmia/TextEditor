@@ -1,11 +1,28 @@
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="sc_css.css">
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="sc_js.js"></script>
-</head>
+<link rel="stylesheet" type="text/css" href="sc_css.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>WYSIWYG Editor</title>
+</head>
+
 <body>
+
 <div id="heading"> WYSIWYG Editor </div>
+
+<div class="toolbar"> 
+
+<a href='#' data-command='bold'><i class='fa fa-bold' ></i></a>
+
+<a href="#" data-command='italic'><i class='fa fa-italic'></i></a>
+
+<a href="#" data-command='underline'><i class='fa fa-underline'></i></a>
+
+<a href="#" data-command='createlink'><i class='fa fa-link'></i></a>
+
+</div>
+
 <div class="editor" contenteditable="true" >
 <p>Write your story here...</p>
 </div>

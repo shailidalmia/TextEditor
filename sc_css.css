@@ -4,9 +4,13 @@ body{
 	margin-top: 32;
 	margin-left: auto;
 	margin-right: auto;;
-    width: 600px;
+    width: 800px;
   	font-family: 'Tahoma';
 
+}
+
+a{
+	cursor: pointer;
 }
 
 #heading{
@@ -15,14 +19,41 @@ body{
 	color: #686868;
 }
 
+.toolbar{
+	text-align: center;
+	margin-top: 24px;
+}
+.toolbar a{
+	border: 1px solid #DDD;
+	border-radius: 5px;
+	background: #FFF;
+	width: 32px;
+	height: 32px;
+	display: inline-block;
+	box-shadow: 1px 1px 4px #DDD;
+}
 
+
+.toolbar a:hover{
+
+	border-color: #EEE;
+	box-shadow: 1px 1px 4px #ffdab9;
+}
+
+a i{
+    padding: 8px;
+}
 
 .editor{
-	min-height: 200px;
+	height: 400px;
+	resize: both;
+	overflow: auto;
 	padding: 12;
 	margin-top: 32;
-	font-size: 20px;
+	font-size: 16px;
 	color: #808080;
 	border: 1px solid #AFAFAF;
 	box-shadow: 2px 2px 8px #DFDFDF;
+	
+    
 }
