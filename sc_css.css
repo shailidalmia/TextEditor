@@ -4,40 +4,48 @@ body{
 	margin-top: 32;
 	margin-left: auto;
 	margin-right: auto;;
-    width: 800px;
+    width: 1000px;
   	font-family: 'Tahoma';
 
 }
 
-a{
-	cursor: pointer;
-}
+
 
 #heading{
 	text-align: center;
-	font-size: 32px;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 40px;
+	font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
 	color: #686868;
+		
 }
 
+
 .toolbar{
-	text-align: center;
-	margin-top: 24px;
+	display: none;
+ 	position: absolute;
+ 	background-color: rgba(0, 0, 0, 0.9);
+ 	padding: 4;
+ 	border-radius: 10px;
 }
+
 .toolbar a{
-	border: 1px solid #DDD;
-	border-radius: 5px;
-	background: #FFF;
+	cursor: pointer;
+	display: inline-block;
 	width: 32px;
 	height: 32px;
-	display: inline-block;
-	box-shadow: 1px 1px 4px #DDD;
+	border-right:1px solid rgba(200, 200, 200, 0.9);
+	
+}
+.toolbar a.last{
+	border-right: none;
 }
 
 
 .toolbar a:hover{
-
-	border-color: #EEE;
-	box-shadow: 1px 1px 4px #ffdab9;
+	background-color: rgba(45, 45, 45, 0.9);
+	border-radius: 4px;
 }
 
 a i{
