@@ -6,21 +6,24 @@ body{
 	margin-right: auto;;
     width: 1000px;
   	font-family: 'Tahoma';
-
 }
-
-
 
 #heading{
 	text-align: center;
 	margin-left: auto;
 	margin-right: auto;
 	font-size: 40px;
-	font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
-	color: #686868;
-		
+	color: #000;
+	font: bold;
 }
 
+.text{
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 24px;
+	color: #888;	
+}
 
 .toolbar{
 	display: none;
@@ -33,15 +36,14 @@ body{
 .toolbar a{
 	cursor: pointer;
 	display: inline-block;
-	width: 32px;
-	height: 32px;
+	width: 40px;
+	height: 40px;
 	border-right:1px solid rgba(200, 200, 200, 0.9);
-	
 }
+
 .toolbar a.last{
 	border-right: none;
 }
-
 
 .toolbar a:hover{
 	background-color: rgba(45, 45, 45, 0.9);
@@ -49,7 +51,7 @@ body{
 }
 
 a i{
-    padding: 8px;
+    padding: 12px;
 }
 
 .editor{
@@ -58,10 +60,16 @@ a i{
 	overflow: auto;
 	padding: 12;
 	margin-top: 32;
-	font-size: 16px;
+	font-size: 20px;
 	color: #808080;
 	border: 1px solid #AFAFAF;
 	box-shadow: 2px 2px 8px #DFDFDF;
+	font-weight: 100;
+    
 	
     
+}
+
+#links{
+	text-decoration: underline;
 }
