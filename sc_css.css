@@ -69,7 +69,13 @@ a i{
 	
     
 }
-
 #links{
-	text-decoration: underline;
+	margin-top: 16px;
+}
+#links .red{
+	color: red;
+}
+
+#links .blue{
+	color: blue;
 }

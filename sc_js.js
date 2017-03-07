@@ -92,13 +92,16 @@ $(document).ready(function(){
                 if(url!="http://"){
                 text = text.replace(match[0], "<span><a href='" + url + "'>" + match[1] + "</a></span>");
                 $('.editor').html(text);
-                document.getElementById("links").innerHTML += "<br>"+match[1]+": "+url;
-                /*if (link_color==0)
-                    document.getElementById("links").innerHTML.style.color="#FF0000";
-                else
-                    document.getElementById("links").innerHTML.style.color="#FF0000";
+                //var textArea=document.getElementById("links").innerHTML ;
+                
+                if (link_color==0){
+                     document.getElementById("links").innerHTML += "<div class='red'>Text: \""+match[1]+"\" Linked to: <u>"+url+"</u></div>";
+                }
+                else{
+                    document.getElementById("links").innerHTML += "<div class='blue'>Text: "+match[1]+" Linked to: <u>"+url+"</u></div>";
+                }
                 link_color=((link_color+1)%2);
-                */
+                
             }
             }
 
