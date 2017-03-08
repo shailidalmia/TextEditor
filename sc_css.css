@@ -70,12 +70,12 @@ a i{
     
 }
 #links{
-	margin-top: 16px;
+	padding: 16;
 }
-#links .red{
+#links .red a:link{
 	color: red;
 }
 
-#links .blue{
+#links .blue a:link{
 	color: blue;
 }

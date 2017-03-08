@@ -41,7 +41,7 @@ $(document).ready(function() {
     	}
     	else
         	var selectedText = x.Selector.getSelected();
-        if(selectedText != ''){
+        if(selectedText != ""){
         	flag=1;
             $('.toolbar').css({
                 'left': pageX - 7,
@@ -67,11 +67,6 @@ var command=$(this).data('command');
 		//this will change the font color to red
       document.execCommand($(this).data('command'), false, $(this).data('value'));
   	}
-	if (command == 'createlink') {
-		//this will create a link 
-      url = prompt('Enter the link here: ', 'http:\/\/');
-      document.execCommand($(this).data('command'), false, url);
-  	}
   	else{	
   		//this will make the text bold, italics or underlined
 		document.execCommand($(this).data('command'), false, null);
@@ -79,30 +74,31 @@ var command=$(this).data('command');
 	});
 });
 
-var link_color=0;
+
 //link creation
+var link_color=0;
 $(document).ready(function(){
     $('.editor').keyup(function (e) {
+        //When closing angular bracket key is pressed
         if(e.keyCode==190 ){
             
             var text = $('.editor').html();
+            //Regular expression to match text such as <a>link me!</a>
             var match= /\&lt;\s*a\s*\&gt;(.+)\&lt;\s*\/\s*a\s*\&gt;/g.exec(text);
             if(match!==null){
+                //input link from the user
                 url=prompt('Enter link here: ', 'http:\/\/');
-                if(url!="http://"){
-                text = text.replace(match[0], "<span><a href='" + url + "'>" + match[1] + "</a></span>");
-                $('.editor').html(text);
-                //var textArea=document.getElementById("links").innerHTML ;
+                    text = text.replace(match[0],"");
+                    $('.editor').html(text);
                 
                 if (link_color==0){
-                     document.getElementById("links").innerHTML += "<div class='red'>Text: \""+match[1]+"\" Linked to: <u>"+url+"</u></div>";
+                     document.getElementById("links").innerHTML += "<div class='red'><span><a href='" + url + "'>" + match[1] + "</a></span></div>";
                 }
                 else{
-                    document.getElementById("links").innerHTML += "<div class='blue'>Text: "+match[1]+" Linked to: <u>"+url+"</u></div>";
+                    document.getElementById("links").innerHTML += "<div class='blue'><span><a href='" + url + "'>" + match[1] + "</a></span></div>";
                 }
                 link_color=((link_color+1)%2);
                 
-            }
             }
 
         }
