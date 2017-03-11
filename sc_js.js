@@ -41,7 +41,14 @@ setEndOfContenteditable($('.editor')[0]);
 
 function showHTML(){
    // $('#words').text(words);
-    $('#html').text($('.editor').html());
+    var html_content=$('.editor').html();
+    var replace="ere";
+    var re = new RegExp(replace, "g");
+    var newStr='POTATO';
+    
+    $('#html').html(html_content.replace(re, newStr));
+    //$('#html').text(html_content.trim().replace(/\s+/g, ' ').split(' '));
+
 
 }
 function convertHTML(){
@@ -138,18 +145,21 @@ $(document).ready(function(){
                 link_color=((link_color+1)%2);
                 setEndOfContenteditable($('.editor')[0]); 
             }
-            
+
         }
  });
  });
  
 //randomizeeeeee
 var words;
- function RandomWord(words,pos) {
+ function RandomWord(words,pos, htmlStr) {
 
               
                 if(words[pos].length == 4){
                     console.log(i +" was called");
+                    console.log(words[pos]);
+                    var re = new RegExp(words[pos], "g");
+                    //console.log(html);
                     $.ajax({
                                 url: 'http://randomword.setgetgo.com/get.php',
                                 data: {
@@ -157,8 +167,13 @@ var words;
                                 },
                                 dataType: 'jsonp',
                                 success: function(data) {
-                                    words[pos]=data.Word;
-                                    $('.editor').text(words.join(" "));
+                                   // var replace="ere";
+
+                                    htmlStr=$('.editor').html();
+                                    $('.editor').html( htmlStr.replace(re , data.Word));
+
+                                    //words[pos]=data.Word;
+                                    //$('.editor').text(words.join(" "));
                                 },
                                 type: 'GET'
                             });
@@ -172,6 +187,8 @@ var words;
 
     function RandomWordComplete() {
         var content = $('.editor').text();
+       
+        
       //  var html_content=$('#text').html();
         words = content.trim().replace(/\s+/g, ' ');
         words = words.replace(/,/g, ' , ');
@@ -183,13 +200,14 @@ var words;
        // words2=html_content.trim().replace(/\s+/g, ' ').split(/[\s,.?<>/]+/);//.length;
 
         ///$('#puraana_text').text(words+"<br>"+words2);
-
+        var html_content;
         console.log(words.length);
 
         for(i=0; i<words.length; i++){
           if(words[i].length==4)
             {
-                RandomWord(words,i);
+                html_content=$('.editor').html();
+                RandomWord(words,i, html_content);
 
             }
            
