@@ -5,7 +5,7 @@
 <link rel="stylesheet" type="text/css" href="sc_css.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>A WYSIWYG Editor</title>
-<link rel="icon" href="icon.png">
+<link rel="icon" href="diary.ico">
 </head>
 
 <body>
@@ -21,11 +21,19 @@
 <a href="#" class="last" data-command='underline'><i class='fa fa-underline' style="color: #FFF"></i></a>
 
 </div>
+<button class="button" onclick="window.open('about.html','_blank')"><i class='fa fa-info-circle'></i> &nbsp;&nbsp;About </a></button>
+<button class="button" onclick="RandomWordComplete()"><i class='fa fa-random'></i> &nbsp;&nbsp;Randomize! </button>
 
-<div class="editor" contenteditable="true" >
-<p>Write your story here...</p>
+<div class="editor" contenteditable="true" > 
+<p> There's a lady who's sure, all that glitters is gold and she's buying a stairway to heaven. When she gets there she knows, if the stores are all closed, with a word she can get what she came for. Oo-oo-oh, oo-oo-oh, and she's buying a stairway to heaven.</p>	
+
+
 </div>
 <div id="links"></div>
+<button id ="btn" onclick="showHTML()">HTML</button>
+<button id ="btn1" onclick="convertHTML()">Convert</button>
+<div id="html"> </div>
+<div id="convert" contenteditable="true"></div>
 
 </body>
 </html>

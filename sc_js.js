@@ -1,15 +1,53 @@
 
-//Start a new paragraph on pressing the enter key
-$('.editor').on('keypress', function (e) {
+//Autofocus on the contenteditable box on page reload
+ $(document).ready(function() {
+ window.onload=function(){
+    $('.editor').focus();
+ } 
+});
+
+//Set caret positon to the end of the text
+function setEndOfContenteditable(contentEditableElement)
+{
+    var range,selection;
+    if(document.createRange)
+    {
+        range = document.createRange();
+        range.selectNodeContents(contentEditableElement);
+        range.collapse(false);
+        selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+    }   
+}
+
+$(document).ready(function() {
+setEndOfContenteditable($('.editor')[0]); 
+
+});
+
+
+  /*$('.editor p').on('keypress', function (e) {
     if (e.keyCode === 13) {
         e.preventDefault();
-        $(this).after('</p><p>');
+       // $(this).after('</p><p>');
+     //  var div=document.createElement('div');
+       $('.editor').append("<div>Some text</div>");
     }
 }).on('click', function(e) {
     e.preventDefault();
     
-}); 
+}); */
 
+function showHTML(){
+   // $('#words').text(words);
+    $('#html').text($('.editor').html());
+
+}
+function convertHTML(){
+    $('#convert').html(document.getElementById('html').innerText);
+ 
+}
 
 //display the toolbar when text is selected
 if (!window.x) {
@@ -98,10 +136,65 @@ $(document).ready(function(){
                     document.getElementById("links").innerHTML += "<div class='blue'><span><a href='" + url + "'>" + match[1] + "</a></span></div>";
                 }
                 link_color=((link_color+1)%2);
-                
+                setEndOfContenteditable($('.editor')[0]); 
             }
-
+            
         }
  });
  });
  
+//randomizeeeeee
+var words;
+ function RandomWord(words,pos) {
+
+              
+                if(words[pos].length == 4){
+                    console.log(i +" was called");
+                    $.ajax({
+                                url: 'http://randomword.setgetgo.com/get.php',
+                                data: {
+                                    format: 'json'
+                                },
+                                dataType: 'jsonp',
+                                success: function(data) {
+                                    words[pos]=data.Word;
+                                    $('.editor').text(words.join(" "));
+                                },
+                                type: 'GET'
+                            });
+                     
+                 }
+
+                 else
+                    return;
+               
+            }
+
+    function RandomWordComplete() {
+        var content = $('.editor').text();
+      //  var html_content=$('#text').html();
+        words = content.trim().replace(/\s+/g, ' ');
+        words = words.replace(/,/g, ' , ');
+        words = words.replace(/\./g, ' . ');
+        words = words.replace(/\?/g, ' ? ');
+       // words = words.replace(/<[abiu]+>/g, ' , ');
+
+        words= words.split(' ');//.length;
+       // words2=html_content.trim().replace(/\s+/g, ' ').split(/[\s,.?<>/]+/);//.length;
+
+        ///$('#puraana_text').text(words+"<br>"+words2);
+
+        console.log(words.length);
+
+        for(i=0; i<words.length; i++){
+          if(words[i].length==4)
+            {
+                RandomWord(words,i);
+
+            }
+           
+        }
+
+    }
+
+   
