@@ -6,7 +6,7 @@
  } 
 });
 
-//Set caret positon to the end of the text
+//Function to set caret positon to the end of the text
 function setEndOfContenteditable(contentEditableElement)
 {
     var range,selection;
@@ -21,40 +21,11 @@ function setEndOfContenteditable(contentEditableElement)
     }   
 }
 
+//Set caret position to the end of the text
 $(document).ready(function() {
 setEndOfContenteditable($('.editor')[0]); 
-
 });
 
-
-  /*$('.editor p').on('keypress', function (e) {
-    if (e.keyCode === 13) {
-        e.preventDefault();
-       // $(this).after('</p><p>');
-     //  var div=document.createElement('div');
-       $('.editor').append("<div>Some text</div>");
-    }
-}).on('click', function(e) {
-    e.preventDefault();
-    
-}); */
-
-function showHTML(){
-   // $('#words').text(words);
-    var html_content=$('.editor').html();
-    var replace="ere";
-    var re = new RegExp(replace, "g");
-    var newStr='POTATO';
-    
-    $('#html').html(html_content.replace(re, newStr));
-    //$('#html').text(html_content.trim().replace(/\s+/g, ' ').split(' '));
-
-
-}
-function convertHTML(){
-    $('#convert').html(document.getElementById('html').innerText);
- 
-}
 
 //display the toolbar when text is selected
 if (!window.x) {
@@ -89,7 +60,7 @@ $(document).ready(function() {
         if(selectedText != ""){
         	flag=1;
             $('.toolbar').css({
-                'left': pageX - 7,
+                'left': pageX - 7, // to display the toolbar above the selected text 
                 'top' : pageY - 70
             }).fadeIn(200);
         } else {
@@ -97,7 +68,7 @@ $(document).ready(function() {
         }
     });
     $(document).on("mousedown", function(e){
-        pageX = e.pageX;
+        pageX = e.pageX;    //store the x and y coordinates of the mouse caret
         pageY = e.pageY;
     });
 });
@@ -135,7 +106,7 @@ $(document).ready(function(){
                 url=prompt('Enter link here: ', 'http:\/\/');
                     text = text.replace(match[0],"");
                     $('.editor').html(text);
-                
+                //to display alternate colors of the link
                 if (link_color==0){
                      document.getElementById("links").innerHTML += "<div class='red'><span><a href='" + url + "'>" + match[1] + "</a></span></div>";
                 }
@@ -143,6 +114,7 @@ $(document).ready(function(){
                     document.getElementById("links").innerHTML += "<div class='blue'><span><a href='" + url + "'>" + match[1] + "</a></span></div>";
                 }
                 link_color=((link_color+1)%2);
+                //set the caret position to the end of text after link removal
                 setEndOfContenteditable($('.editor')[0]); 
             }
 
@@ -150,16 +122,14 @@ $(document).ready(function(){
  });
  });
  
-//randomizeeeeee
+//randomizeeeeee function
 var words;
- function RandomWord(words,pos, htmlStr) {
+ function RandomWord(words,pos) {
 
-              
                 if(words[pos].length == 4){
-                    console.log(i +" was called");
+                    console.log(i +" was called");  //debug output
                     console.log(words[pos]);
-                    var re = new RegExp(words[pos], "g");
-                    //console.log(html);
+                    var re = new RegExp(words[pos], "g");   //create regex object 
                     $.ajax({
                                 url: 'http://randomword.setgetgo.com/get.php',
                                 data: {
@@ -167,52 +137,36 @@ var words;
                                 },
                                 dataType: 'jsonp',
                                 success: function(data) {
-                                   // var replace="ere";
-
-                                    htmlStr=$('.editor').html();
-                                    $('.editor').html( htmlStr.replace(re , data.Word));
-
-                                    //words[pos]=data.Word;
-                                    //$('.editor').text(words.join(" "));
+                                    ///extract the text from editor alongwith the html tags
+                                    var html_content=$('.editor').html();
+                                    //replace the four letter word with the random word generated and display back in the editor area
+                                    $('.editor').html( html_content.replace(re , data.Word));
                                 },
                                 type: 'GET'
-                            });
-                     
+                            });  
                  }
-
                  else
                     return;
-               
             }
 
     function RandomWordComplete() {
-        var content = $('.editor').text();
-       
-        
-      //  var html_content=$('#text').html();
+        //extract text from editor area without the html tags
+        var content = $('.editor').text();     
+        //separate the commas, fullstops and question marks so that they don't count as the length of the word
         words = content.trim().replace(/\s+/g, ' ');
         words = words.replace(/,/g, ' , ');
         words = words.replace(/\./g, ' . ');
         words = words.replace(/\?/g, ' ? ');
-       // words = words.replace(/<[abiu]+>/g, ' , ');
-
-        words= words.split(' ');//.length;
-       // words2=html_content.trim().replace(/\s+/g, ' ').split(/[\s,.?<>/]+/);//.length;
-
-        ///$('#puraana_text').text(words+"<br>"+words2);
-        var html_content;
+        //split the string by space character and store it in an array
+        words= words.split(' ');
         console.log(words.length);
-
         for(i=0; i<words.length; i++){
           if(words[i].length==4)
             {
-                html_content=$('.editor').html();
-                RandomWord(words,i, html_content);
+                RandomWord(words,i);
 
-            }
-           
+            }  
         }
-
     }
 
    
